@@ -1,0 +1,49 @@
+kube-prometheus-stack:
+  crds:
+    enabled: false
+  defaultRules:
+    create: true
+  global:
+    rbac:
+      create: true
+      createAggregateClusterRoles: true
+  alertmanager:
+    enabled: true
+    ingress:
+      enabled: false
+    alertmanagerSpec:
+      replicas: 1
+    externalUrl: https://alertmanager.alexlebens.dev
+  grafana:
+    enabled: false
+  kube-state-metrics:
+    selfMonitor:
+      enabled: true
+  prometheusOperator:
+    admissionWebhooks:
+      enabled: true
+    namespaces:
+      releaseNamespace: true
+      additional:
+        - kube-system
+        - argocd
+        - cert-manager
+        - loki
+        - traefik
+  prometheus:
+    ingress:
+      enabled: false
+    prometheusSpec:
+      scrapeInterval: 30s
+      retention: 7d
+      externalUrl: https://prometheus.alexlebens.dev
+      serviceMonitorSelectorNilUsesHelmValues: false
+      podMonitorSelectorNilUsesHelmValues: false
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: do-block-storage
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 10Gi
