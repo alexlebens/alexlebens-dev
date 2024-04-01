@@ -48,6 +48,17 @@ applicationSet:
         - ApplyOutOfSyncOnly=true
         - ServerSideApply=true
         - PruneLast=true
+  - name: storage
+    syncPolicy:
+      automated:
+        enabled: true
+        prune: true
+        selfheal: false
+      syncOptions:
+        - CreateNamespace=true
+        - ApplyOutOfSyncOnly=true
+        - ServerSideApply=false
+        - PruneLast=true        
 application:
   prometheusOperatorCrds:
     namespace: kube-system
