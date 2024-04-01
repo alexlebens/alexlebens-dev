@@ -75,7 +75,7 @@ postgres-cluster:
       requests:
         memory: 256Mi
         cpu: 50m
-        hugepages-2Mi: null
+        hugepages-2Mi: '0'
       limits:
         memory: 1Gi
         cpu: 100m
