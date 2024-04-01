@@ -49,11 +49,11 @@ authentik:
         traefik.ingress.kubernetes.io/router.tls: "true"
         cert-manager.io/cluster-issuer: letsencrypt-issuer
       hosts:
-        - authentik.alexlebens.dev
+        - auth.alexlebens.dev
       tls:
         - secretName: authentik-secret-tls
           hosts:
-            - authentik.alexlebens.dev
+            - auth.alexlebens.dev
   worker:
     name: worker
     replicas: 1
