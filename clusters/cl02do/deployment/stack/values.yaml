@@ -57,7 +57,7 @@ applicationSet:
       syncOptions:
         - CreateNamespace=true
         - ApplyOutOfSyncOnly=true
-        - ServerSideApply=false
+        - ServerSideApply=true
         - PruneLast=true        
 application:
   prometheusOperatorCrds:
