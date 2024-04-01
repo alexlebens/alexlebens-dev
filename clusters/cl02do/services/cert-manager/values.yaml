@@ -1,0 +1,10 @@
+cert-manager:
+  installCRDs: true
+  replicaCount: 1
+  prometheus:
+    enabled: true
+    servicemonitor:
+      enabled: true
+  cainjector:
+    enabled: true
+    replicaCount: 1
