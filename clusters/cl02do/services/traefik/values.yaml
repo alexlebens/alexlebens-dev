@@ -1,0 +1,53 @@
+traefik:
+  deployment:
+    kind: DaemonSet
+  ingressClass:
+    enabled: true
+    isDefaultClass: true
+  ingressRoute:
+    dashboard:
+      enabled: false
+  providers:
+    kubernetesCRD:
+      allowCrossNamespace: true
+    kubernetesIngress:
+      publishedService:
+        enabled: true
+  metrics:
+    service:
+      enabled: true
+  ports:
+    traefik:
+      expose: false
+    web:
+      port: 8000
+      expose: true
+      exposedPort: 80
+      redirectTo:
+        port: websecure
+        priority: 10
+      forwardedHeaders:
+        insecure: false
+      proxyProtocol:
+        insecure: false
+    websecure:
+      port: 8443
+      expose: true
+      exposedPort: 443
+      http3:
+        enabled: false
+      forwardedHeaders:
+        insecure: false
+      proxyProtocol:
+        insecure: false
+      tls:
+        enabled: true
+    metrics:
+      expose: false
+  tlsStore:
+    default:
+      defaultCertificate:
+        secretName: traefik-secret-tls
+  service:
+    enabled: true
+    type: LoadBalancer
