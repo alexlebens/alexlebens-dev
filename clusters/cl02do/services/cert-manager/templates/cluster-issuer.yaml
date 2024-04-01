@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/version: {{ .Chart.AppVersion }}
     app.kubernetes.io/component: issuer
-    app.kubernetes.io/part-of: {{ .Release.Name }}  
+    app.kubernetes.io/part-of: {{ .Release.Name }}
 spec:
   acme:
     email: alexanderlebens@gmail.com
