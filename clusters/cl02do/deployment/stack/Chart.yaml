@@ -1,0 +1,6 @@
+apiVersion: v2
+name: stack
+version: 0.0.1
+sources:
+  - https://github.com/alexlebens/alexlebens-dev.git  
+appVersion: 0.0.1
