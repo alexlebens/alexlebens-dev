@@ -78,7 +78,7 @@ postgres-cluster:
       limits:
         memory: 1Gi
         cpu: 200m
-        hugepages-2Mi: 10Mi
+        hugepages-2Mi: '0'
     storage:
       data:
         storageClass: do-block-storage
