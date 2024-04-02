@@ -81,10 +81,10 @@ postgres-cluster:
         cpu: 200m
     storage:
       data:
-        storageClass: do-block-storage
+        storageClass: do-block-storage-retain
         size: 8Gi
       wal:
-        storageClass: do-block-storage
+        storageClass: do-block-storage-retain
         size: 2Gi
   bootstrap:
     recoveryEnabled: false
