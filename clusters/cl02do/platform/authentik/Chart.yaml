@@ -9,7 +9,4 @@ dependencies:
   - name: authentik
     version: 2024.2.2
     repository: https://charts.goauthentik.io/
-  - name: postgres-cluster
-    version: 0.2.3
-    repository: http://alexlebens.github.io/helm-charts
 appVersion: "2024.2.2"
