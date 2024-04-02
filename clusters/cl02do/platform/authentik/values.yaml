@@ -9,23 +9,43 @@ authentik:
       - name: AUTHENTIK_POSTGRESQL__HOST
         valueFrom:
           secretKeyRef:
-            name: postgresql-authentik-cluster-app
+            name: postgresql-cl02do-authentik-secret
             key: host
       - name: AUTHENTIK_POSTGRESQL__NAME
         valueFrom:
           secretKeyRef:
-            name: postgresql-authentik-cluster-app
-            key: dbname
+            name: postgresql-cl02do-cluster-secret
+            key: database
       - name: AUTHENTIK_POSTGRESQL__USER
         valueFrom:
           secretKeyRef:
-            name: postgresql-authentik-cluster-app
+            name: postgresql-cl02do-cluster-secret
             key: user
       - name: AUTHENTIK_POSTGRESQL__PASSWORD
         valueFrom:
           secretKeyRef:
-            name: postgresql-authentik-cluster-app
+            name: postgresql-cl02do-cluster-secret
             key: password
+      - name: AUTHENTIK_POSTGRESQL__PORT
+        valueFrom:
+          secretKeyRef:
+            name: postgresql-cl02do-authentik-secret
+            key: port
+      - name: AUTHENTIK_POSTGRESQL__USE_PGBOUNCER
+        valueFrom:
+          secretKeyRef:
+            name: postgresql-cl02do-authentik-secret
+            key: pgbouncer
+      - name: AUTHENTIK_POSTGRESQL__SSLMODE
+        valueFrom:
+          secretKeyRef:
+            name: postgresql-cl02do-authentik-secret
+            key: sslmode
+      - name: AUTHENTIK_POSTGRESQL__SSLROOTCERT
+        valueFrom:
+          secretKeyRef:
+            name: postgresql-cl02do-authentik-secret
+            key: sslrootcert
   server:
     name: server
     replicas: 1
