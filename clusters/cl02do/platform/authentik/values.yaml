@@ -71,20 +71,12 @@ postgres-cluster:
       repository: ghcr.io/cloudnative-pg/postgresql
       tag: 16.2
     instances: 1
-    resources:
-      requests:
-        memory: 256Mi
-        cpu: 50m
-        hugepages-2Mi: '0'
-      limits:
-        memory: 1Gi
-        cpu: 200m
     storage:
       data:
-        storageClass: do-block-storage-retain
+        storageClass: do-block-storage
         size: 8Gi
       wal:
-        storageClass: do-block-storage-retain
+        storageClass: do-block-storage
         size: 2Gi
   bootstrap:
     recoveryEnabled: false
@@ -92,7 +84,7 @@ postgres-cluster:
     endpointURL: https://nyc3.digitaloceanspaces.com
     bucket: alexlebens-dev
   backup:
-    backupEnabled: true
+    backupEnabled: false
     backupIndex: 1
     endpointURL: https://nyc3.digitaloceanspaces.com
     bucket: alexlebens-dev
