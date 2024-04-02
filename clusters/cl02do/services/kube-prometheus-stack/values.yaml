@@ -16,6 +16,9 @@ kube-prometheus-stack:
     externalUrl: https://alertmanager.alexlebens.dev
   grafana:
     enabled: false
+  kubeApiServer:
+    tlsConfig:
+      insecureSkipVerify: true    
   kube-state-metrics:
     selfMonitor:
       enabled: true
