@@ -14,17 +14,17 @@ authentik:
       - name: AUTHENTIK_POSTGRESQL__NAME
         valueFrom:
           secretKeyRef:
-            name: postgresql-cl02do-cluster-secret
+            name: postgresql-cl02do-authentik-secret
             key: database
       - name: AUTHENTIK_POSTGRESQL__USER
         valueFrom:
           secretKeyRef:
-            name: postgresql-cl02do-cluster-secret
+            name: postgresql-cl02do-authentik-secret
             key: user
       - name: AUTHENTIK_POSTGRESQL__PASSWORD
         valueFrom:
           secretKeyRef:
-            name: postgresql-cl02do-cluster-secret
+            name: postgresql-cl02do-authentik-secret
             key: password
       - name: AUTHENTIK_POSTGRESQL__PORT
         valueFrom:
