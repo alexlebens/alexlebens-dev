@@ -28,7 +28,7 @@ spec:
         - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        name: in-cluster
+        name: {{ $.Values.destination }}
         namespace: '{{ $stack.namespace | default `{{path.basename}}` }}'
       project: default
       revisionHistoryLimit: 3

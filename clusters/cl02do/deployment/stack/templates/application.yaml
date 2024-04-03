@@ -12,7 +12,7 @@ spec:
     targetRevision: {{ .Values.application.prometheusOperatorCrds.source.revision }}
     path: "{{ .Values.git.path }}/{{ .Values.application.prometheusOperatorCrds.source.path }}"
   destination:
-    name: in-cluster
+    name: {{ .Values.destination }}
     namespace: {{ .Values.application.prometheusOperatorCrds.namespace }}
   revisionHistoryLimit: 3
   syncPolicy:
@@ -33,7 +33,7 @@ spec:
     targetRevision: {{ .Values.application.metricsServer.source.revision }}
     path: "{{ .Values.git.path }}/{{ .Values.application.metricsServer.source.path }}"
   destination:
-    name: in-cluster
+    name: {{ .Values.destination }}
     namespace: {{ .Values.application.metricsServer.namespace }}
   revisionHistoryLimit: 3
   syncPolicy:

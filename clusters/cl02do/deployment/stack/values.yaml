@@ -1,3 +1,4 @@
+destination: cl02do
 git:
   repo: git@github.com:alexlebens/alexlebens-dev.git
   revision: HEAD
@@ -6,7 +7,7 @@ applicationSet:
   - name: applications
     syncPolicy:
       automated:
-        enabled: true
+        enabled: false
         prune: true
         selfheal: false
       syncOptions:
@@ -18,7 +19,7 @@ applicationSet:
     namespace: argocd
     syncPolicy:
       automated:
-        enabled: true
+        enabled: false
         prune: true
         selfheal: false
       syncOptions:
@@ -29,7 +30,7 @@ applicationSet:
   - name: platform
     syncPolicy:
       automated:
-        enabled: true
+        enabled: false
         prune: true
         selfheal: false
       syncOptions:
@@ -40,7 +41,7 @@ applicationSet:
   - name: services
     syncPolicy:
       automated:
-        enabled: true
+        enabled: false
         prune: true
         selfheal: false
       syncOptions:
@@ -51,7 +52,7 @@ applicationSet:
   - name: storage
     syncPolicy:
       automated:
-        enabled: true
+        enabled: false
         prune: true
         selfheal: false
       syncOptions:
@@ -67,9 +68,6 @@ application:
       revision: HEAD
       path: standalone/prometheus-operator-crds
     syncPolicy:
-      automated:
-        prune: true
-        selfHeal: true
       retry:
         limit: 10
         backoff:
@@ -88,9 +86,6 @@ application:
       revision: HEAD
       path: standalone/metrics-server
     syncPolicy:
-      automated:
-        prune: true
-        selfHeal: true
       retry:
         limit: 10
         backoff:
