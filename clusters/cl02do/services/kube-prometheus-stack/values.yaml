@@ -25,13 +25,6 @@ kube-prometheus-stack:
   prometheusOperator:
     admissionWebhooks:
       enabled: true
-    resources:
-      limits:
-        cpu: 300m
-        memory: 300Mi
-      requests:
-        cpu: 100m
-        memory: 100Mi
     namespaces:
       releaseNamespace: true
       additional:
@@ -44,13 +37,6 @@ kube-prometheus-stack:
     ingress:
       enabled: false
     prometheusSpec:
-      resources:
-        limits:
-          cpu: 300m
-          memory: 300Mi
-        requests:
-          cpu: 100m
-          memory: 100Mi
       scrapeInterval: 30s
       retention: 7d
       externalUrl: https://prometheus.alexlebens.dev
