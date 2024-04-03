@@ -18,7 +18,7 @@ kube-prometheus-stack:
     enabled: false
   kubeApiServer:
     tlsConfig:
-      insecureSkipVerify: true    
+      insecureSkipVerify: true
   kube-state-metrics:
     selfMonitor:
       enabled: true
@@ -31,7 +31,7 @@ kube-prometheus-stack:
         memory: 300Mi
       requests:
         cpu: 100m
-        memory: 100Mi      
+        memory: 100Mi
     namespaces:
       releaseNamespace: true
       additional:
@@ -43,14 +43,14 @@ kube-prometheus-stack:
   prometheus:
     ingress:
       enabled: false
-    resources:
-      limits:
-        cpu: 300m
-        memory: 300Mi
-      requests:
-        cpu: 100m
-        memory: 100Mi          
     prometheusSpec:
+      resources:
+        limits:
+          cpu: 300m
+          memory: 300Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi
       scrapeInterval: 30s
       retention: 7d
       externalUrl: https://prometheus.alexlebens.dev
