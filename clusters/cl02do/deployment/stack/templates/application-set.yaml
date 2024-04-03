@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: {{ $stack.name }}
+  name: "{{ $stack.name }}-{{ $.Values.destination }}"
   namespace: {{ $.Release.Namespace }}
   labels:
     app.kubernetes.io/name: {{ $stack.name }}
@@ -23,7 +23,7 @@ spec:
           - path: "{{ $.Values.git.path }}/{{ $stack.name }}/*"
   template:
     metadata:
-      name: '{{ `{{path.basename}}` }}'
+      name: '{{ `{{path.basename}}` }}-{{ $.Values.destination }}'
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:

@@ -59,7 +59,7 @@ applicationSet:
         - CreateNamespace=true
         - ApplyOutOfSyncOnly=true
         - ServerSideApply=true
-        - PruneLast=true        
+        - PruneLast=true
 application:
   prometheusOperatorCrds:
     namespace: kube-system
