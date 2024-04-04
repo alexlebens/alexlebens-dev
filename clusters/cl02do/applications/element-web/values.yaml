@@ -22,11 +22,11 @@ element-web:
       traefik.ingress.kubernetes.io/router.tls: "true"
       cert-manager.io/cluster-issuer: letsencrypt-issuer
     hosts:
-      - chat.alexlebens.net
+      - chat.alexlebens.dev
     tls:
       - secretName: element-secret-tls
         hosts:
-          - chat.alexlebens.net
+          - chat.alexlebens.dev
   resources:
     limits:
       cpu: 100m
