@@ -10,7 +10,7 @@ vault:
     enabled: true
     image:
       repository: hashicorp/vault
-      tag: "1.16.0"
+      tag: "1.16.1"
     resources:
       limits:
         memory: 256Mi
