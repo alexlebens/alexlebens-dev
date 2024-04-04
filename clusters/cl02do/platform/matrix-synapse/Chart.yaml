@@ -4,6 +4,8 @@ version: 0.0.1
 sources:
   - https://github.com/element-hq/synapse
   - https://github.com/matrix-org/matrix-hookshot
+  - https://github.com/mautrix/discord
+  - https://github.com/mautrix/whatsapp
   - https://gitlab.com/ananace/charts/-/tree/master/charts/matrix-synapse
 dependencies:
   - name: matrix-synapse
