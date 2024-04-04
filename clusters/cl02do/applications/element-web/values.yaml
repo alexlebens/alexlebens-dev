@@ -1,0 +1,36 @@
+element-web:
+  replicaCount: 1
+  defaultServer:
+    url: https://matrix.alexlebens.dev
+    name: alexlebens.dev
+    identity_url: https://alexlebens.dev
+  config:
+    disable_3pid_login: true
+    brand: "Alex Lebens Dev"
+    branding:
+      welcome_background_url: https://alexlebens-dev.nyc3.digitaloceanspaces.com/cl02do/assets/background.jpg
+      auth_header_logo_url: https://alexlebens-dev.nyc3.digitaloceanspaces.com/cl02do/assets/icon_white.png
+    sso_redirect_options:
+      immediate: true
+    default_theme: dark
+    default_country_code: US
+  ingress:
+    enabled: true
+    className: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-issuer
+    hosts:
+      - chat.alexlebens.net
+    tls:
+      - secretName: element-secret-tls
+        hosts:
+          - chat.alexlebens.net
+  resources:
+    limits:
+      cpu: 100m
+      memory: 100Mi
+    requests:
+      cpu: 10m
+      memory: 10Mi
