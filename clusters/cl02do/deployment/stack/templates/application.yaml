@@ -11,6 +11,8 @@ spec:
     repoURL: {{ .Values.application.prometheusOperatorCrds.source.repo }}
     targetRevision: {{ .Values.application.prometheusOperatorCrds.source.revision }}
     path: "{{ .Values.git.path }}/{{ .Values.application.prometheusOperatorCrds.source.path }}"
+    helm:
+      {{- toYaml .Values.application.prometheusOperatorCrds.source.helm | nindent 6 }}     
   destination:
     name: {{ .Values.destination }}
     namespace: {{ .Values.application.prometheusOperatorCrds.namespace }}
@@ -32,6 +34,8 @@ spec:
     repoURL: {{ .Values.application.metricsServer.source.repo }}
     targetRevision: {{ .Values.application.metricsServer.source.revision }}
     path: "{{ .Values.git.path }}/{{ .Values.application.metricsServer.source.path }}"
+    helm:
+      {{- toYaml .Values.application.metricsServer.source.helm | nindent 6 }} 
   destination:
     name: {{ .Values.destination }}
     namespace: {{ .Values.application.metricsServer.namespace }}

@@ -56,11 +56,13 @@ application:
       repo: git@github.com:alexlebens/alexlebens-dev.git
       revision: HEAD
       path: standalone/prometheus-operator-crds
+      helm:
+        releaseName: prometheus-operator-crds
     syncPolicy:
       automated:
         enabled: true
         prune: true
-        selfheal: false    
+        selfheal: false
       retry:
         limit: 10
         backoff:
@@ -78,11 +80,13 @@ application:
       repo: git@github.com:alexlebens/alexlebens-dev.git
       revision: HEAD
       path: standalone/metrics-server
+      helm:
+        releaseName: metrics-server
     syncPolicy:
       automated:
         enabled: true
         prune: true
-        selfheal: false    
+        selfheal: false
       retry:
         limit: 10
         backoff:

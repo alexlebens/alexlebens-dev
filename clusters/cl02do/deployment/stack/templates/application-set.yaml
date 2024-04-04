@@ -36,6 +36,8 @@ spec:
         repoURL: {{ $.Values.git.repo }}
         targetRevision: {{ $.Values.git.revision }}
         path: '{{ `{{path}}` }}'
+        helm:
+          releaseName: '{{ `{{path.basename}}` }}'
       syncPolicy:
         {{- if $stack.syncPolicy.automated.enabled }}
         automated:
