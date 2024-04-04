@@ -18,8 +18,6 @@ matrix-synapse:
       client_whitelist:
         - https://chat.alexlebens.dev/
       update_profile_information: true
-    password_config:
-      enabled: false      
   synapse:
     strategy:
       type: Recreate
