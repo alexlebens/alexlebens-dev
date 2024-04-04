@@ -1,0 +1,61 @@
+outline:
+  ingress:
+    enabled: true
+    className: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-issuer
+    host: wiki.alexlebens.net
+  persistence:
+    type: s3
+    s3:
+      credentialsSecret: outline-bucket-auth
+      endpointConfigMap:
+        enabled: true
+        name: outline-alexlebens-dev-bucket
+      region: us-east-1
+      bucketName: alexlebens-dev/cl02do/outline
+      endpoint: https://nyc3.digitaloceanspaces.com
+  outline:
+    url: https://wiki.alexlebens.net
+    secretKey:
+      existingSecretName: outline-key-secret
+      existingSecretKey: secret-key
+    utilsSecret:
+      existingSecretName: outline-key-secret
+      existingSecretKey: utils-key
+    database:
+      usernameSecret:
+        existingSecretName: outline-database-secret
+        existingSecretKey: username
+      passwordSecret:
+        existingSecretName: outline-database-secret
+        existingSecretKey: password
+      databaseName:
+        existingSecretName: outline-database-secret
+        existingSecretKey: dbname
+      databaseHost:
+        existingSecretName: outline-database-secret
+        existingSecretKey: host
+      databasePort:
+        existingSecretName: outline-database-secret
+        existingSecretKey: port
+      connectionPoolMin: "4"
+      connectionPoolMax: "4"
+      sslMode: require
+    auth:
+      oidc:
+        enabled: true
+        clientId:
+          existingSecretName: outline-oidc-secret
+          existingSecretKey: client
+        clientSecret:
+          existingSecretName: outline-oidc-secret
+          existingSecretKey: secret
+        authUri: https://auth.alexlebens.dev/application/o/authorize/
+        tokenUri: https://auth.alexlebens.dev/application/o/token/
+        userinfoUri: https://auth.alexlebens.dev/application/o/userinfo/
+        usernameClaim: email
+        displayName: Authentik
+        scopes: openid profile email

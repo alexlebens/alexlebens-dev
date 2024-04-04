@@ -1,0 +1,11 @@
+apiVersion: v2
+name: outline
+version: 0.1.0
+sources:
+  - https://github.com/outline/outline
+  - https://github.com/alexlebens/helm-charts/charts/outline
+dependencies:
+  - name: outline
+    version: 0.1.0
+    repository: http://alexlebens.github.io/helm-charts
+appVersion: v0.75.2
