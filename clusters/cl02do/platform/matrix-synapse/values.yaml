@@ -9,6 +9,17 @@ matrix-synapse:
     reportStats: false
     enableRegistration: true
     trustedKeyServers: []
+  extraConfig:
+    enable_metrics: true
+    enable_registration_without_verification: false
+    password_config:
+      enabled: false
+    sso:
+      client_whitelist:
+        - https://chat.alexlebens.dev/
+      update_profile_information: true
+    password_config:
+      enabled: false      
   synapse:
     strategy:
       type: Recreate
