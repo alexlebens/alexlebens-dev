@@ -28,6 +28,12 @@ matrix-synapse:
       - name: matrix-hookshot-config-secret
         secret:
           secretName: matrix-hookshot-config-secret
+      - name: mautrix-discord-config-secret
+        secret:
+          secretName: mautrix-discord-config-secret
+      - name: mautrix-whatsapp-config-secret
+        secret:
+          secretName: mautrix-whatsapp-config-secret                   
     extraVolumeMounts:
       - name: matrix-synapse-config-secret
         mountPath: /synapse/config/conf.d/oidc.yaml
@@ -41,6 +47,14 @@ matrix-synapse:
         mountPath: /synapse/config/conf.d/hookshot-registration.yaml
         subPath: hookshot-registration.yaml
         readOnly: true
+      - name: mautrix-discord-config-secret
+        mountPath: /synapse/config/conf.d/mautrix-discord-registration.yaml
+        subPath: mautrix-discord-registration.yaml
+        readOnly: true
+      - name: mautrix-whatsapp-config-secret
+        mountPath: /synapse/config/conf.d/mautrix-whatsapp-registration.yaml
+        subPath: mautrix-whatsapp-registration.yaml
+        readOnly: true                
     resources:
       limits:
         cpu: 200m
@@ -122,7 +136,7 @@ matrix-hookshot:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
         cert-manager.io/cluster-issuer: letsencrypt-issuer
-      host: matrix.alexlebens.dev
+      host: matrix-hookshot.alexlebens.dev
     appservice:
       enabled: false
   metrics:
@@ -139,3 +153,33 @@ redis:
     enabled: true
     existingSecret: matrix-synapse-config-secret
     existingSecretPasswordKey: redis-password
+mautrix-discord:
+  ingress:
+    enabled: true
+    className: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-issuer
+    host: matrix-discord.alexlebens.dev
+  persistence:
+    enabled: ture
+    size: 500Mi
+  mautrixDiscord:
+    existingSecret: mautrix-discord-config-secret
+    existingRegistrationSecret: mautrix-discord-config-secret
+mautrix-whatsapp:
+  ingress:
+    enabled: true
+    className: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-issuer
+    host: matrix-whatsapp.alexlebens.dev
+  persistence:
+    enabled: ture
+    size: 500Mi
+  mautrixWhatsapp:
+    existingSecret: mautrix-whatsapp-config-secret
+    existingRegistrationSecret: mautrix-whatsapp-config-secret
