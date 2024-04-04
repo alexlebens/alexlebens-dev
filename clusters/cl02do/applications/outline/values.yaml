@@ -6,7 +6,7 @@ outline:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.tls: "true"
       cert-manager.io/cluster-issuer: letsencrypt-issuer
-    host: wiki.alexlebens.net
+    host: wiki.alexlebens.dev
   persistence:
     type: s3
     s3:
@@ -18,7 +18,7 @@ outline:
       bucketName: alexlebens-dev/cl02do/outline
       endpoint: https://nyc3.digitaloceanspaces.com
   outline:
-    url: https://wiki.alexlebens.net
+    url: https://wiki.alexlebens.dev
     secretKey:
       existingSecretName: outline-key-secret
       existingSecretKey: secret-key
