@@ -11,9 +11,6 @@ outline:
     type: s3
     s3:
       credentialsSecret: outline-bucket-auth
-      endpointConfigMap:
-        enabled: true
-        name: outline-alexlebens-dev-bucket
       region: us-east-1
       bucketName: alexlebens-dev/cl02do/outline
       endpoint: https://nyc3.digitaloceanspaces.com
