@@ -61,7 +61,6 @@ application:
     syncPolicy:
       automated:
         prune: true
-        selfheal: true
       retry:
         limit: 10
         backoff:
@@ -84,7 +83,6 @@ application:
     syncPolicy:
       automated:
         prune: true
-        selfheal: true
       retry:
         limit: 10
         backoff:
