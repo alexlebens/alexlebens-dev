@@ -30,7 +30,7 @@ ghost:
     sqliteDatabaseFile: "content/data/ghost.db"
     name: ghost
   settings:
-    url: www.alexlebens.dev
+    url: https://www.alexlebens.dev
   storage:
     className: do-block-storage
     accessModes:
