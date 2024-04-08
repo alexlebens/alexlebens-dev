@@ -18,10 +18,14 @@ traefik:
       enabled: true
   ports:
     traefik:
-      expose: false
+      expose:
+        default: false
+        internal: true
     web:
       port: 8000
-      expose: true
+      expose:
+        default: true
+        internal: true
       exposedPort: 80
       redirectTo:
         port: websecure
@@ -32,7 +36,9 @@ traefik:
         insecure: false
     websecure:
       port: 8443
-      expose: true
+      expose:
+        default: true
+        internal: true
       exposedPort: 443
       http3:
         enabled: false
@@ -43,7 +49,9 @@ traefik:
       tls:
         enabled: true
     metrics:
-      expose: false
+      expose:
+        default: false
+        internal: true
   tlsStore:
     default:
       defaultCertificate:
