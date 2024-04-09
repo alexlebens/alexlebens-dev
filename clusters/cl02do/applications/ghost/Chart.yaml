@@ -6,6 +6,6 @@ sources:
   - https://github.com/groundhog2k/helm-charts/tree/master/charts/ghost
 dependencies:
   - name: ghost
-    version: 0.122.1
+    version: 0.123.0
     repository: https://groundhog2k.github.io/helm-charts/
 appVersion: 5.81.1
