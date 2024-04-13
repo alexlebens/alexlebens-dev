@@ -1,35 +1,31 @@
 loki:
+  deploymentMode: SingleBinary
   loki:
     auth_enabled: true
     commonConfig:
       replication_factor: 1
     storage:
-      type: "filesystem"
-  singleBinary:
-    replicas: 1
-  monitoring:
-    dashboards:
-      enabled: false
-    serviceMonitor:
-      enabled: true
-    selfMonitoring:
-      grafanaAgent:
-        installOperator: false
-  ingress:
+      type: filesystem
+  enterprise:
     enabled: false
   gateway:
     enabled: true
     basicAuth:
       enabled: false
-  enterprise:
-    enabled: false
+  singleBinary:
+    replicas: 1
+    persistence:
+      enableStatefulSetAutoDeletePVC: true
+      enabled: true
+      size: 10Gi
+      storageClass: ceph-block
 promtail:
   daemonset:
     enabled: true
   serviceMonitor:
     enabled: true
     prometheusRule:
-      enabled: false
+      enabled: true
   config:
     clients:
       - url: http://loki-gateway/loki/api/v1/push
