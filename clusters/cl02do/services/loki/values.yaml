@@ -28,7 +28,7 @@ loki:
       enableStatefulSetAutoDeletePVC: true
       enabled: true
       size: 10Gi
-      storageClass: ceph-block
+      storageClass: do-block-storage
   write:
     replicas: 0
   read:
