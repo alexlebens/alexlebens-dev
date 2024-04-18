@@ -1,6 +1,6 @@
 apiVersion: v2
 name: matrix-synapse
-version: 0.0.1
+version: 1.0.0
 sources:
   - https://github.com/element-hq/synapse
   - https://github.com/matrix-org/matrix-hookshot
