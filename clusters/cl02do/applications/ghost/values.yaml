@@ -3,7 +3,7 @@ ghost:
   existingSecret: ghost-password-secret
   ghostEmail: aurailious@gmail.com
   ghostBlogTitle: Ghost
-  ghostHost: ghost.alexlebens.net
+  ghostHost: ghost.alexlebens.dev
   ghostPath: /
   extraVolumes:
     - name: do-ca
@@ -18,7 +18,7 @@ ghost:
     type: ClusterIP
   ingress:
     enabled: true
-    hostname: ghost.alexlebens.net
+    hostname: ghost.alexlebens.dev
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.tls: "true"
