@@ -1,31 +1,26 @@
-cert-manager:
-  crds:
-    enabled: true
+external-secrets:
   resources:
     limits:
-      cpu: 50m
       memory: 128Mi
+      cpu: 50m
     requests:
       cpu: 10m
-      memory: 64Mi
-  prometheus:
+      memory: 32Mi
+  serviceMonitor:
     enabled: true
-    servicemonitor:
-      enabled: true
   webhook:
     resources:
       limits:
-        cpu: 100m
         memory: 128Mi
+        cpu: 50m
       requests:
         cpu: 10m
-        memory: 64Mi
-  cainjector:
-    enabled: true
+        memory: 32Mi
+  certController:
     resources:
       limits:
-        cpu: 100m
         memory: 128Mi
+        cpu: 50m
       requests:
         cpu: 10m
-        memory: 64Mi
+        memory: 32Mi

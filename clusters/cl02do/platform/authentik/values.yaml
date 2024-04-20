@@ -49,6 +49,13 @@ authentik:
   server:
     name: server
     replicas: 1
+    resources:
+      limits:
+        memory: 512Mi
+        cpu: 100m
+      requests:
+        cpu: 20m
+        memory: 512Mi
     volumes:
       - name: custom-css
         configMap:
@@ -77,6 +84,13 @@ authentik:
   worker:
     name: worker
     replicas: 1
+    resources:
+      limits:
+        memory: 256Mi
+        cpu: 50m
+      requests:
+        cpu: 10m
+        memory: 256Mi
   prometheus:
     rules:
       enabled: true

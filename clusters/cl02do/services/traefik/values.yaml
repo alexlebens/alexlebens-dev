@@ -61,3 +61,10 @@ traefik:
     type: LoadBalancer
     annotations:
       service.beta.kubernetes.io/do-loadbalancer-size-unit: "1"
+  resources:
+    limits:
+      cpu: 100m
+      memory: 256Mi  
+    requests:
+      cpu: 10m
+      memory: 128Mi
