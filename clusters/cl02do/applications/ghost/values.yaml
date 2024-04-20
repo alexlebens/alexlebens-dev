@@ -6,11 +6,11 @@ ghost:
   ghostHost: ghost.alexlebens.net
   ghostPath: /
   extraVolumes:
-    - name: do-ca.crt
+    - name: do-ca
       secret:
         secretName: ghost-postgresql-ssl-secret
   extraVolumeMounts:
-    - name: do-ca.crt
+    - name: do-ca
       mountPath: /etc/ssl/certs/do-ca.crt
       subPath: do-ca.crt
   resourcesPreset: "nano"
