@@ -49,4 +49,5 @@ ghost:
         size: 10Gi
       resourcesPreset: nano
       startupProbe:
+        enabled: false
         failureThreshold: 30
