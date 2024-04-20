@@ -1,0 +1,11 @@
+apiVersion: v2
+name: ghost
+version: 1.0.0
+sources:
+  - https://github.com/TryGhost/Ghost
+  - https://github.com/bitnami/charts/tree/main/bitnami/ghost
+dependencies:
+  - name: ghost
+    version: 20.0.3
+    repository: oci://registry-1.docker.io/bitnamicharts
+appVersion: 5.82.2

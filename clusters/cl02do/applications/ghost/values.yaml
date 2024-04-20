@@ -1,0 +1,45 @@
+ghost:
+  ghostUsername: ghost
+  existingSecret: ghost-password-secret
+  ghostEmail: aurailious@gmail.com
+  ghostBlogTitle: Ghost
+  ghostHost: ghost.alexlebens.net
+  ghostPath: /
+  extraVolumes:
+    - name: do-ca.crt
+      secret:
+        secretName: ghost-postgresql-ssl-secret
+  extraVolumeMounts:
+    - name: do-ca.crt
+      mountPath: /etc/ssl/certs/do-ca.crt
+      subPath: do-ca.crt
+  resourcesPreset: "nano"
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: true
+    hostname: ghost.alexlebens.net
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-issuer
+    tls: true
+    ingressClassName: traefik
+  persistence:
+    enabled: true
+    storageClass: do-block-storage
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+  volumePermissions:
+    enabled: true
+  mysql:
+    enabled: false
+  externalDatabase:
+    host: private-db-postgresql-nyc1-cl02do-do-user-13463908-0.c.db.ondigitalocean.com
+    port: 25061
+    user: ghost
+    database: ghost
+    existingSecret: ghost-postgresql-secret
+    ssl: true
+    sslCaFile: /etc/ssl/certs/do-ca.crt
