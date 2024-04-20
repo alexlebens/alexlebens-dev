@@ -9,14 +9,19 @@ ghost:
       traefik.ingress.kubernetes.io/router.tls: "true"
       cert-manager.io/cluster-issuer: letsencrypt-issuer
     hosts:
-      - host: ghost.alexlebens.dev
+      - host: www.alexlebens.dev
         paths:
           - path: /
             pathType: ImplementationSpecific
+      - host: blog.alexlebens.dev
+        paths:
+          - path: /
+            pathType: ImplementationSpecific            
     tls:
       - secretName: ghost-secret-tls
         hosts:
-          - ghost.alexlebens.dev
+          - www.alexlebens.dev
+          - blog.alexlebens.dev          
   resources:
     limits:
       cpu: 500m
@@ -28,7 +33,7 @@ ghost:
     type: sqlite
     sqliteDatabaseFile: "content/data/ghost.db"
   settings:
-    url: https://ghost.alexlebens.dev
+    url: https://blog.alexlebens.dev
     logToStdout: true
     mode: production
   storage:
