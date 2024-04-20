@@ -57,10 +57,10 @@ matrix-synapse:
         readOnly: true
     resources:
       limits:
-        cpu: 500m
+        cpu: 100m
         memory: 256Mi
       requests:
-        cpu: 50m
+        cpu: 10m
         memory: 128Mi
   workers:
     default:
@@ -109,10 +109,6 @@ matrix-synapse:
     enabled: true
     uid: 666
     gid: 666
-    resources:
-      requests:
-        memory: 128Mi
-        cpu: 10m
   ingress:
     enabled: true
     className: traefik
@@ -135,7 +131,7 @@ matrix-hookshot:
         memory: 128Mi
       requests:
         cpu: 10m
-        memory: 64Mi
+        memory: 32Mi
   ingress:
     webhook:
       enabled: true
@@ -175,7 +171,7 @@ mautrix-discord:
         memory: 128Mi
       requests:
         cpu: 10m
-        memory: 64Mi
+        memory: 32Mi
   ingress:
     enabled: true
     className: traefik
@@ -198,7 +194,7 @@ mautrix-whatsapp:
         memory: 128Mi
       requests:
         cpu: 10m
-        memory: 64Mi
+        memory: 32Mi
   ingress:
     enabled: true
     className: traefik

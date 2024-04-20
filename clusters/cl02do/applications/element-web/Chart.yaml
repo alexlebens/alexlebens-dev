@@ -1,6 +1,6 @@
 apiVersion: v2
 name: element-web
-version: 0.0.1
+version: 1.0.0
 sources:
   - https://github.com/element-hq/element-web
   - https://gitlab.com/ananace/charts/-/tree/master/charts/element-web

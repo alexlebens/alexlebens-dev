@@ -1,6 +1,6 @@
 apiVersion: v2
 name: stack-cl02do
-version: 0.0.1
+version: 1.0.0
 sources:
-  - https://github.com/alexlebens/alexlebens-dev.git  
-appVersion: 0.0.1
+  - https://github.com/alexlebens/alexlebens-dev.git
+appVersion: 1.0.0

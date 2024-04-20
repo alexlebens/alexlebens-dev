@@ -51,10 +51,10 @@ authentik:
     replicas: 1
     resources:
       limits:
-        memory: 512Mi
         cpu: 100m
+        memory: 512Mi
       requests:
-        cpu: 20m
+        cpu: 10m
         memory: 512Mi
     volumes:
       - name: custom-css
@@ -86,8 +86,8 @@ authentik:
     replicas: 1
     resources:
       limits:
+        cpu: 100m
         memory: 256Mi
-        cpu: 50m
       requests:
         cpu: 10m
         memory: 256Mi

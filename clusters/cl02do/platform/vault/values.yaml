@@ -13,11 +13,11 @@ vault:
       tag: "1.16.1"
     resources:
       limits:
+        cpu: 100m
         memory: 256Mi
-        cpu: 200m
       requests:
         memory: 128Mi
-        cpu: 50m
+        cpu: 10m
     ingress:
       enabled: false
     route:

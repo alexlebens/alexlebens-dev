@@ -1,8 +1,8 @@
 external-secrets:
   resources:
     limits:
+      cpu: 100m
       memory: 128Mi
-      cpu: 50m
     requests:
       cpu: 10m
       memory: 32Mi
@@ -11,16 +11,16 @@ external-secrets:
   webhook:
     resources:
       limits:
+        cpu: 100m
         memory: 128Mi
-        cpu: 50m
       requests:
         cpu: 10m
         memory: 32Mi
   certController:
     resources:
       limits:
+        cpu: 100m
         memory: 128Mi
-        cpu: 50m
       requests:
         cpu: 10m
         memory: 32Mi

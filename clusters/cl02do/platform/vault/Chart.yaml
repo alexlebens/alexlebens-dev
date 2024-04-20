@@ -1,6 +1,6 @@
 apiVersion: v2
 name: vault
-version: 0.0.1
+version: 1.0.0
 sources:
   - https://github.com/hashicorp/vault
   - https://github.com/hashicorp/vault-helm

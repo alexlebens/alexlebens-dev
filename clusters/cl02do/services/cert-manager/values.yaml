@@ -3,11 +3,11 @@ cert-manager:
     enabled: true
   resources:
     limits:
-      cpu: 50m
+      cpu: 100m
       memory: 128Mi
     requests:
       cpu: 10m
-      memory: 64Mi
+      memory: 32Mi
   prometheus:
     enabled: true
     servicemonitor:
@@ -19,7 +19,7 @@ cert-manager:
         memory: 128Mi
       requests:
         cpu: 10m
-        memory: 64Mi
+        memory: 32Mi
   cainjector:
     enabled: true
     resources:
@@ -28,4 +28,4 @@ cert-manager:
         memory: 128Mi
       requests:
         cpu: 10m
-        memory: 64Mi
+        memory: 32Mi
