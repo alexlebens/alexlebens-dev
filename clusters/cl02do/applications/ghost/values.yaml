@@ -28,7 +28,7 @@ ghost:
     type: sqlite
     sqliteDatabaseFile: "content/data/ghost.db"
   settings:
-    url: ghost.alexlebens.dev
+    url: https://ghost.alexlebens.dev
     logToStdout: true
     mode: production
   storage:
