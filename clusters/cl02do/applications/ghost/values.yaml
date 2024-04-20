@@ -35,12 +35,16 @@ ghost:
   volumePermissions:
     enabled: true
   mysql:
-    enabled: false
-  externalDatabase:
-    host: db-postgresql-nyc1-cl02do-do-user-13463908-0.c.db.ondigitalocean.com
-    port: 25061
-    user: ghost
-    database: ghost-pool
-    existingSecret: ghost-postgresql-secret
-    ssl: true
-    sslCaFile: /etc/ssl/certs/do-ca.crt
+    enabled: true
+    auth:
+      database: ghost
+      username: ghost
+      existingSecret: ghost-password-secret
+    primary:
+      persistence:
+        enabled: true
+        storageClass: do-block-storage
+        accessModes:
+          - ReadWriteOnce
+        size: 10Gi
+      resourcesPreset: nano
