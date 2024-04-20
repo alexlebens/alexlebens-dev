@@ -1,4 +1,5 @@
 ghost:
+  allowEmptyPassword: false
   ghostUsername: ghost
   existingSecret: ghost-password-secret
   ghostEmail: aurailious@gmail.com
@@ -36,7 +37,7 @@ ghost:
   mysql:
     enabled: false
   externalDatabase:
-    host: private-db-postgresql-nyc1-cl02do-do-user-13463908-0.c.db.ondigitalocean.com
+    host: db-postgresql-nyc1-cl02do-do-user-13463908-0.c.db.ondigitalocean.com
     port: 25061
     user: ghost
     database: ghost-pool
