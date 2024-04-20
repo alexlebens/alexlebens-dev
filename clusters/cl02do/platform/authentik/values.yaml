@@ -51,9 +51,10 @@ authentik:
     replicas: 1
     resources:
       limits:
-        memory: 512Mi
+        cpu: 1500m
+        memory: 1Gi
       requests:
-        cpu: 10m
+        cpu: 50m
         memory: 512Mi
     volumes:
       - name: custom-css
@@ -85,9 +86,10 @@ authentik:
     replicas: 1
     resources:
       limits:
-        memory: 256Mi
+        cpu: 1500m
+        memory: 512MI
       requests:
-        cpu: 10m
+        cpu: 50m
         memory: 256Mi
   prometheus:
     rules:
