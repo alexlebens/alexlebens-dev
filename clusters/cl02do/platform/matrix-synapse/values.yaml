@@ -153,8 +153,12 @@ redis:
     enabled: true
     existingSecret: matrix-synapse-config-secret
     existingSecretPasswordKey: redis-password
-  persistence:
-    enabled: false
+  master:
+    persistence:
+      enabled: false
+  replica:
+    persistence:
+      enabled: false  
 mautrix-discord:
   ingress:
     enabled: true
