@@ -33,7 +33,7 @@ matrix-synapse:
           secretName: mautrix-discord-config-secret
       - name: mautrix-whatsapp-config-secret
         secret:
-          secretName: mautrix-whatsapp-config-secret                   
+          secretName: mautrix-whatsapp-config-secret
     extraVolumeMounts:
       - name: matrix-synapse-config-secret
         mountPath: /synapse/config/conf.d/oidc.yaml
@@ -54,7 +54,7 @@ matrix-synapse:
       - name: mautrix-whatsapp-config-secret
         mountPath: /synapse/config/conf.d/mautrix-whatsapp-registration.yaml
         subPath: mautrix-whatsapp-registration.yaml
-        readOnly: true                
+        readOnly: true
     resources:
       limits:
         cpu: 200m
@@ -153,6 +153,8 @@ redis:
     enabled: true
     existingSecret: matrix-synapse-config-secret
     existingSecretPasswordKey: redis-password
+  persistence:
+    enabled: false
 mautrix-discord:
   ingress:
     enabled: true
