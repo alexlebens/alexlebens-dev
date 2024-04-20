@@ -48,3 +48,5 @@ ghost:
           - ReadWriteOnce
         size: 10Gi
       resourcesPreset: nano
+      startupProbe:
+        failureThreshold: 30
