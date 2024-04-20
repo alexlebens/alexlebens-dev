@@ -1,0 +1,38 @@
+ghost:
+  serviceAccount:
+    create: true
+  ingress:
+    enabled: true
+    className: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-issuer
+    hosts:
+      - host: ghost.alexlebens.dev
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: ghost-secret-tls
+        hosts:
+          - ghost.alexlebens.dev
+  resources:
+    limits:
+      cpu: 500m
+      memory: 256Mi
+    requests:
+      cpu: 10m
+      memory: 64Mi
+  externalDatabase:
+    type: sqlite
+    sqliteDatabaseFile: "content/data/ghost.db"
+  settings:
+    url: ghost.alexlebens.dev
+    logToStdout: true
+    mode: production
+  storage:
+    requestedSize: 10Gi
+    className: do-block-storage
+    accessModes:
+      - ReadWriteOnce
