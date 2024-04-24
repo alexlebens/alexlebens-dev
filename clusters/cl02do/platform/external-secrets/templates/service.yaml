@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/component: web
     app.kubernetes.io/part-of: {{ .Release.Name }}
   annotations:
-    tailscale.com/tailnet-fqdn: vault-vault.boreal-beaufort.ts.net
+    tailscale.com/tailnet-fqdn: vault-vault-active.boreal-beaufort.ts.net
 spec:
   externalName: ts-vault-cl01tl-x9j8k.tailscale-operator.svc.cluster.local
   type: ExternalName
