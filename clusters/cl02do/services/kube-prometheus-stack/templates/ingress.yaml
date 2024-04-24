@@ -11,6 +11,9 @@ metadata:
     app.kubernetes.io/part-of: {{ .Release.Name }}
 spec:
   ingressClassName: tailscale
+  tls:
+    - hosts:
+        - alertmanager-cl02do
   rules:
     - http:
         paths:
@@ -36,6 +39,9 @@ metadata:
     app.kubernetes.io/part-of: {{ .Release.Name }}
 spec:
   ingressClassName: tailscale
+  tls:
+    - hosts:
+        - prometheus-cl02do
   rules:
     - http:
         paths:
