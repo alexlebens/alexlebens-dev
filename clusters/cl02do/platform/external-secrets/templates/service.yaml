@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: vault-cl01tl
+  name: vault-api-cl01tl
   namespace: {{ .Release.Namespace }}
   labels:
-    app.kubernetes.io/name: vault-cl01tl
+    app.kubernetes.io/name: vault-api-cl01tl
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/version: {{ .Chart.AppVersion }}
     app.kubernetes.io/component: web
     app.kubernetes.io/part-of: {{ .Release.Name }}
   annotations:
-    tailscale.com/tailnet-fqdn: vault-vault.boreal-beaufort.ts.net
+    tailscale.com/tailnet-fqdn: vault-api-cl01tl.boreal-beaufort.ts.net
 spec:
-  externalName: ts-vault-cl01tl-kkk6r.tailscale-operator.svc.cluster.local
+  externalName: placeholder
   type: ExternalName
