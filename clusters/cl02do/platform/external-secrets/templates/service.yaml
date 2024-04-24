@@ -12,5 +12,5 @@ metadata:
   annotations:
     tailscale.com/tailnet-fqdn: vault-service-cl01tl.boreal-beaufort.ts.net
 spec:
-  externalName: placeholder
+  externalName: ts-vault-service-cl01tl-lbcw7.tailscale-operator.svc.cluster.local
   type: ExternalName
