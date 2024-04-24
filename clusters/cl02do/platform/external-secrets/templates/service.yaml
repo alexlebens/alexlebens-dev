@@ -12,5 +12,5 @@ metadata:
   annotations:
     tailscale.com/tailnet-fqdn: vault-tailscale-cl01tl-vault.boreal-beaufort.ts.net
 spec:
-  externalName: ts-vault-api-cl01tl-np582.tailscale-operator.svc.cluster.local
+  externalName: ts-vault-api-cl01tl-svjr6.tailscale-operator.svc.cluster.local
   type: ExternalName
