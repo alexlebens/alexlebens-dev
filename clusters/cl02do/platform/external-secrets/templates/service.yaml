@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/component: web
     app.kubernetes.io/part-of: {{ .Release.Name }}
   annotations:
-    tailscale.com/tailnet-ip: 100.95.46.19
+    tailscale.com/tailnet-fqdn: vault-tailscale-cl01tl-vault.boreal-beaufort.ts.net
 spec:
   externalName: ts-vault-api-cl01tl-np582.tailscale-operator.svc.cluster.local
   type: ExternalName
