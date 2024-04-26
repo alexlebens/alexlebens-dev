@@ -1,4 +1,5 @@
 destination: cl01tl
+name: dev
 git:
   repo: git@github.com:alexlebens/alexlebens-dev.git
   revision: HEAD

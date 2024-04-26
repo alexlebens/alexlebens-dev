@@ -1,5 +1,5 @@
 apiVersion: v2
-name: stack-cl01tl
+name: stack-cl01tl-dev
 version: 1.0.0
 sources:
   - https://github.com/alexlebens/alexlebens-dev.git  
