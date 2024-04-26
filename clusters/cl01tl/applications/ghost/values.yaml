@@ -1,0 +1,127 @@
+ghost:
+  global:
+    nameOverride: ghost
+  controllers:
+    main:
+      type: deployment
+      strategy: Recreate
+      containers:
+        main:
+          image:
+            repository: docker.io/ghost
+            tag: 5.82.2
+            pullPolicy: IfNotPresent
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: url
+              value: https://blog.alexlebens.dev
+            - name: mail__transport
+              value: SMTP
+            - name: logging__transports
+              values: '["stdout"]'
+          envFrom:
+            - secretRef:
+                name: ghost-database-secret
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 512Mi
+            requests:
+              cpu: 10m
+              memory: 256Mi
+  serviceAccount:
+    create: true
+  service:
+    http:
+      controller: main
+      ports:
+        http:
+          port: 80
+          targetPort: 2368
+          protocol: TCP
+  persistence:
+    content:
+      enabled: true
+      type: persistentVolumeClaim
+      storageClass: ceph-block
+      accessMode: ReadWriteOnce
+      size: 10Gi
+      advancedMounts:
+        main:
+          main:
+            - path: /var/lib/ghost/content
+              readOnly: false
+cloudflared:
+  global:
+    nameOverride: cloudflared
+  controllers:
+    main:
+      type: deployment
+      strategy: Recreate
+      containers:
+        main:
+          image:
+            repository: cloudflare/cloudflared
+            tag: "2024.4.1"
+            pullPolicy: IfNotPresent
+          args:
+            - tunnel
+            - --no-autoupdate
+            - run
+            - --token
+            - $(CF_MANAGED_TUNNEL_TOKEN)
+          env:
+            - name: CF_MANAGED_TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-cloudflared-secret
+                  key: cf-tunnel-token
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 10m
+              memory: 64Mi
+mysql-8-cluster:
+  mode: standalone
+  cluster:
+    serverInstances: 3
+    baseServerId: 1000
+    exisitingCredentialsSecret: ghost-mysql-root-secret
+    image:
+      registry: container-registry.oracle.com
+      repository: mysql/community-operator
+      version: 8.3.0-2.1.2
+    logs:
+      error:
+        enabled: true
+      general:
+        enabled: true
+      slowQuery:
+        enabled: true
+        longQueryTime: 2.5
+    datadirVolumeClaimTemplate:
+      storageClassName: local-path
+      accessModes:
+        - Read
+      size: 10Gi
+  backup:
+    enabled: false
+    profiles:
+      - name: s3-backup
+        snapshot:
+          storage:
+            s3:
+              prefix: cl01tl/ghost-mysql-8
+              config: ghost-mysql-backup-secret
+              bucketName: alexlebens-mysql-backups
+              endpoint: https://s3-website.us-east-2.amazonaws.com
+    schedules:
+      - name: schedule-daily
+        enabled: true
+        schedule: "0 0 0 * * *"
+        timeZone: "US/Mountain"
+        deleteBackupData: false
+        backupProfileName: s3-backup
