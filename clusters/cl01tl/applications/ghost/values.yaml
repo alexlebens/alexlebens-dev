@@ -93,7 +93,7 @@ mysql-8-cluster:
     image:
       registry: container-registry.oracle.com
       repository: mysql/community-operator
-      version: 8.3.0-2.1.2
+      version: 8.3.0
     logs:
       error:
         enabled: true
