@@ -17,6 +17,6 @@ dependencies:
     version: 3.1.0
   - name: mysql-cluster
     alias: mysql-8-cluster
-    version: 0.1.0
+    version: 0.1.1
     repository: http://alexlebens.github.io/helm-charts        
 appVersion: 5.82.2
