@@ -12,14 +12,10 @@ ghost:
             tag: 5.82.2
             pullPolicy: IfNotPresent
           env:
-            - name: NODE_ENV
-              value: production
-            - name: url
-              value: https://blog.alexlebens.dev
-            - name: mail__transport
-              value: SMTP
-            - name: logging__transports
-              values: '["stdout"]'
+            NODE_ENV: production
+            url: https://blog.alexlebens.dev
+            mail__transport: SMTP
+            logging__transports: '["stdout"]'
           envFrom:
             - secretRef:
                 name: ghost-database-secret
