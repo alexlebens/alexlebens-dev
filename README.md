@@ -1,6 +1,6 @@
 # alexlebens.dev
 
-GitOps definied infrastrucutre for my Digitial Ocean cluster.
+GitOps definied infrastrucutre for the alexlebens.dev domain.
 
 ## License
 
