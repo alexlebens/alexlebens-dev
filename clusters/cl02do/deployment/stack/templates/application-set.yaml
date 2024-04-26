@@ -6,10 +6,10 @@ metadata:
   name: "{{ $stack.name }}-{{ $.Values.destination }}"
   namespace: {{ $.Release.Namespace }}
   labels:
-    app.kubernetes.io/name: {{ $stack.name }}
-    app.kubernetes.io/instance: {{ $stack.name }}
+    app.kubernetes.io/name: "{{ $stack.name }}-{{ $.Values.destination }}"
+    app.kubernetes.io/instance: "{{ $stack.name }}-{{ $.Values.destination }}"
     app.kubernetes.io/version: {{ $.Chart.AppVersion }}
-    app.kubernetes.io/component: {{ $stack.name }}
+    app.kubernetes.io/component: argocd
     app.kubernetes.io/part-of: {{ $.Release.Name }}
 spec:
   syncPolicy:
@@ -20,24 +20,24 @@ spec:
         repoURL: {{ $.Values.git.repo }}
         revision: {{ $.Values.git.revision }}
         directories:
-          - path: "{{ $.Values.git.path }}/{{ $stack.name }}/*"
+          - path: "clusters/{{ $.Values.destination }}/{{ $stack.name }}/*"
   template:
     metadata:
-      name: '{{ `{{path.basename}}` }}-{{ $.Values.destination }}'
+      name: "{{ `{{path.basename}}` }}-{{ $.Values.destination }}"
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        name: {{ $.Values.destination }}
-        namespace: '{{ $stack.namespace | default `{{path.basename}}` }}'
+        name: {{ ternary "in-cluster" $.Values.destination (eq $.Values.destination "cl01tl")}}
+        namespace: "{{ $stack.namespace | default `{{path.basename}}` }}"
       project: default
       revisionHistoryLimit: 3
       source:
         repoURL: {{ $.Values.git.repo }}
         targetRevision: {{ $.Values.git.revision }}
-        path: '{{ `{{path}}` }}'
+        path: "{{ `{{path}}` }}"
         helm:
-          releaseName: '{{ `{{path.basename}}` }}'
+          releaseName: "{{ `{{path.basename}}` }}"
       syncPolicy:
         {{- if $stack.syncPolicy.automated.enabled }}
         automated:

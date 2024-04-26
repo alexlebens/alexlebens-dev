@@ -2,19 +2,7 @@ destination: cl02do
 git:
   repo: git@github.com:alexlebens/alexlebens-dev.git
   revision: HEAD
-  path: clusters/cl02do
 applicationSet:
-  - name: applications
-    syncPolicy:
-      automated:
-        enabled: true
-        prune: true
-        selfheal: false
-      syncOptions:
-        - CreateNamespace=true
-        - ApplyOutOfSyncOnly=true
-        - ServerSideApply=false
-        - PruneLast=true
   - name: deployment
     namespace: argocd
     syncPolicy:
