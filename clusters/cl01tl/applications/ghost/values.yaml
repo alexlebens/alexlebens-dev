@@ -95,8 +95,6 @@ mysql-8-cluster:
       repository: mysql/community-operator
       version: 8.3.0
     logs:
-      error:
-        enabled: true
       general:
         enabled: true
       slowQuery:
