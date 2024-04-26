@@ -107,7 +107,7 @@ mysql-8-cluster:
       accessModes: ReadWriteOnce
       size: 10Gi
   backup:
-    enabled: false
+    enabled: true
     profiles:
       - name: s3-backup
         snapshot:
