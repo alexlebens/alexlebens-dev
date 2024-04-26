@@ -104,8 +104,7 @@ mysql-8-cluster:
         longQueryTime: 2.5
     datadirVolumeClaimTemplate:
       storageClassName: local-path
-      accessModes:
-        - ReadWriteOnce
+      accessModes: ReadWriteOnce
       size: 10Gi
   backup:
     enabled: false
