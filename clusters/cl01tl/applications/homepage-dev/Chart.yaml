@@ -1,9 +1,10 @@
 apiVersion: v2
 name: homepage-dev
 version: 1.0.0
-home: https://outline.alexlebens.net/doc/homepage-s2clWoI5EC
+home: https://outline.alexlebens.net/doc/homepage-dev-s2clWoI5EC
 sources:
   - https://github.com/gethomepage/homepage
+  - https://github.com/cloudflare/cloudflared
   - https://github.com/bjw-s/helm-charts/blob/main/charts/other/app-template/values.yaml
 dependencies:
   - name: app-template
