@@ -110,7 +110,7 @@ mysql-8-cluster:
               prefix: cl01tl/ghost-mysql-8
               config: ghost-mysql-backup-secret
               bucketName: alexlebens-mysql-backups
-              endpoint: https://s3-website.us-east-2.amazonaws.com
+              endpoint: https://s3.us-east-2.amazonaws.com
     schedules:
       - name: schedule-daily
         enabled: true
